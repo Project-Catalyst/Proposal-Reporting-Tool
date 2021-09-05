@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/v-slot-style -->
   <div class="container">
     <CBox
       v-bind="mainStyles[colorMode]"
@@ -8,127 +9,170 @@
       flex-dir="column"
       justify-content="center"
     >
-      <CHeading text-align="center" mb="4">
-        ⚡️ Hello chakra-ui/vue
-      </CHeading>
       <CFlex justify="center" direction="column" align="center">
-        <CBox mb="3">
-          <CIconButton
-            mr="3"
-            :icon="colorMode === 'light' ? 'moon' : 'sun'"
-            :aria-label="`Switch to ${
-              colorMode === 'light' ? 'dark' : 'light'
-            } mode`"
-            @click="toggleColorMode"
-          />
-          <CButton
-            left-icon="info"
-            variant-color="blue"
-            @click="showToast"
-          >
-            Show Toast
-          </CButton>
-        </CBox>
-        <CAvatarGroup>
-          <CAvatar
-            name="Evan You"
-            alt="Evan You"
-            src="https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Jonathan Bakebwa"
-            alt="Jonathan Bakebwa"
-            src="https://res.cloudinary.com/xtellar/image/upload/v1572857445/me_zqos4e.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Segun Adebayo"
-            alt="Segun Adebayo"
-            src="https://pbs.twimg.com/profile_images/1169353373012897802/skPUWd6e_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar src="pop">
-            <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
-          </CAvatar>
-        </CAvatarGroup>
-        <CButton
-          left-icon="close"
-          variant-color="red"
-          mt="3"
-          @click="showModal = true"
-        >
-          Delete Account
-        </CButton>
-        <CModal :is-open="showModal">
-          <CModalOverlay />
-          <CModalContent>
-            <CModalHeader>Are you sure?</CModalHeader>
-            <CModalBody>Deleting user cannot be undone</CModalBody>
-            <CModalFooter>
-              <CButton @click="showModal = false">
-                Cancel
-              </CButton>
-              <CButton
-                margin-left="3"
-                variant-color="red"
-                @click="showModal = false"
+        <FormulateForm v-model="form">
+          <CStack :spacing="5">
+            <FormulateInput
+              type="email"
+              name="email"
+              label="Your email"
+              validation="required|email"
+            />
+            <FormulateInput
+              type="text"
+              name="fullName"
+              label="Your full name"
+              validation="required"
+              validation-name="Full Name"
+            />
+            <FormulateInput
+              #default="{ index }"
+              type="group"
+              name="proposal"
+              :repeatable="true"
+              label="Proposal(s)"
+              add-label="+ Add another proposal"
+              validation="required"
+            >
+              <CollapsibleGroupItem
+                :index="index"
+                :title="getProposal(index, 'name')"
+                default-title="Proposal"
               >
-                Delete User
-              </CButton>
-            </CModalFooter>
-            <CModalCloseButton @click="showModal = false" />
-          </CModalContent>
-        </CModal>
+                <div class="proposal">
+                  <FormulateInput
+                    name="name"
+                    validation="required"
+                    label="Proposal name"
+                  />
+                  <FormulateInput
+                    type="select"
+                    name="fund"
+                    label="Proposal in fund"
+                    :options="{
+                      F2: 'Fund 2',
+                      F3: 'Fund 3',
+                      F4: 'Fund 4',
+                      F5: 'Fund 5',
+                      F6: 'Fund 6',
+                    }"
+                  />
+                  <FormulateInput
+                    name="reportDetailsPublish"
+                    :options="{
+                      yes: 'Yes, make it public',
+                      no: 'No, not at this time',
+                    }"
+                    type="radio"
+                    label="Are your report details ok to be public?"
+                  />
+
+                  <CStack :spacing="5">
+                    <CText font-size="md">
+                      For proposal {{ getProposal(index, 'name') || '...' }}
+                    </CText>
+
+                    <CText font-size="md">
+                      Describe two significant setbacks, obstacles, or failures
+                      you had this month and what you learned from each
+                      (regardless of wether or not you solved them). Your answer
+                      will not be shared with the public. Text box will expand
+                      as you type.*
+                    </CText>
+
+                    <FormulateInput
+                      name="proposalObstacles"
+                      type="textarea"
+                      label="Your answer"
+                      validation="required"
+                    />
+
+                    <FormulateInput
+                      type="date"
+                      name="launchDate"
+                      label="Proposal launch date"
+                      validation="required"
+                      min="2018-12-01"
+                    />
+
+                    <FormulateInput
+                      name="proposalLaunched"
+                      :options="{
+                        no: 'No',
+                        yes: 'Yes',
+                      }"
+                      type="radio"
+                      label="Has your proposal launched?"
+                    />
+
+                    <div
+                      v-if="getProposal(index, 'proposalLaunched') === 'yes'"
+                    >
+                      <CText font-size="md">
+                        What challenge was your proposal submitted in?
+                      </CText>
+
+                      <FormulateInput
+                        name="challenge"
+                        :options="{
+                          first: 'First',
+                          second: 'Second',
+                          third: 'Third',
+                          fourth: 'Fourth',
+                        }"
+                        type="select"
+                        placeholder="Select challenge"
+                        label="List of challenges in selected fund"
+                      />
+
+                      <FormulateInput
+                        name="succesFactor"
+                        :options="{
+                          first: 'First',
+                          second: 'Second',
+                          third: 'Third',
+                          fourth: 'Fourth',
+                        }"
+                        type="select"
+                        placeholder="Select succes factor"
+                        label="List of succes factors in selected fund"
+                      />
+                    </div>
+                  </CStack>
+                </div>
+              </CollapsibleGroupItem>
+            </FormulateInput>
+          </CStack>
+        </FormulateForm>
       </CFlex>
     </CBox>
+    <pre>{{ form }}</pre>
   </div>
 </template>
 
 <script lang="js">
 import {
   CBox,
-  CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
   CFlex,
-  CHeading
+  CStack,
+  CText,
 } from '@chakra-ui/vue'
+
+import CollapsibleGroupItem from '../components/CollapsibleGroupItem.vue';
 
 export default {
   name: 'App',
   components: {
     CBox,
-    CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
     CFlex,
-    CHeading
+    CStack,
+    CText,
+    CollapsibleGroupItem
   },
   inject: ['$chakraColorMode', '$toggleColorMode'],
   data () {
     return {
+      form: {},
       showModal: false,
       mainStyles: {
         dark: {
@@ -154,14 +198,13 @@ export default {
     }
   },
   methods: {
-    showToast () {
-      this.$toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 10000,
-        isClosable: true
-      })
+    getProposal (index, value) {
+      const proposal = this.form.proposal && this.form.proposal.find((el, i) => i === index);
+      if(value) {
+        return proposal && proposal[value];
+      }else{
+        return proposal;
+      }
     }
   }
 }
