@@ -5,9 +5,12 @@ admin_path:
 webhook_url: 
 sections:
 - type: document
+  path: content/challenges.yaml
+  label: Challenges
+  match: "**/*"
+- type: document
   path: content/funds.yaml
   label: Funds
-  match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
