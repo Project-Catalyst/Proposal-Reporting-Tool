@@ -21,3 +21,5 @@ fields:
         file: content/funds.yaml
         path: funds
     label: Fund
+pages:
+- content/challenges.yaml

@@ -1,31 +1,32 @@
+---
 challenges:
-  - fund: 'F1'
-    label: 'Challenge F1'
-    value: 'challenge1'
-  - fund: 'F2'
-    label: 'Challenge F2'
-    value: 'challenge2'
-  - fund: 'F3'
-    label: 'Challenge F3'
-    value: 'challenge3'
-  - fund: 'F4'
-    label: 'Challenge F4'
-    value: 'challenge4'
-  - fund: 'F5'
-    label: 'F5: Developer ecosystem'
-    value: 'challenge5_1'
-  - fund: 'F5'
-    label: 'F5: DApps & Integrations'
-    value: 'challenge5_2'
-  - fund: 'F5'
-    label: 'F5: Grow Africa, Grow Cardano'
-    value: 'challenge5_3'
-  - fund: 'F6'
-    label: 'F6: Developer ecosystem'
-    value: 'challenge6_1'
-  - fund: 'F6'
-    label: 'F6: DApps & Integrations'
-    value: 'challenge6_2'
-  - fund: 'F6'
-    label: 'F6: Catalyst value onboarding'
-    value: 'challenge6_3'
+- fund: Fund 1
+  label: Challenge F1
+  value: challenge1
+- fund: Fund 2
+  label: Challenge F2
+  value: challenge2
+- fund: Fund 3
+  label: Challenge F3
+  value: challenge3
+- fund: Fund 4
+  label: Challenge F4
+  value: challenge4
+- fund: Fund 5
+  label: 'F5: Developer ecosystem'
+  value: challenge5_1
+- fund: Fund 5
+  label: 'F5: DApps & Integrations'
+  value: challenge5_2
+- fund: Fund 5
+  label: 'F5: Grow Africa, Grow Cardano'
+  value: challenge5_3
+- fund: Fund 6
+  label: 'F6: Developer ecosystem'
+  value: challenge6_1
+- fund: Fund 6
+  label: 'F6: DApps & Integrations'
+  value: challenge6_2
+- fund: Fund 6
+  label: 'F6: Catalyst value onboarding'
+  value: challenge6_3
