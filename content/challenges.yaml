@@ -1,32 +1,22 @@
 ---
 challenges:
-- fund: Fund 1
-  label: 'F1: Developer Ecosystem'
-  value: challenge1
-- fund: Fund 2
-  label: 'F2: Developer Ecosystem'
-  value: challenge2
-- fund: Fund 3
-  label: 'F3: Developer Ecosystem'
-  value: challenge3
-- fund: Fund 4
-  label: 'F4: Developer Ecosystem'
-  value: challenge4
-- fund: Fund 5
-  label: 'F5: Developer ecosystem'
-  value: challenge5_1
-- fund: Fund 5
-  label: 'F5: DApps & Integrations'
-  value: challenge5_2
-- fund: Fund 5
-  label: 'F5: Grow Africa, Grow Cardano'
-  value: challenge5_3
-- fund: Fund 6
-  label: 'F6: Developer ecosystem'
-  value: challenge6_1
-- fund: Fund 6
-  label: 'F6: DApps & Integrations'
-  value: challenge6_2
-- fund: Fund 6
-  label: 'F6: Catalyst value onboarding'
-  value: challenge6_3
+  - fund: Fund 1
+    label: 'F1: Developer Ecosystem'
+  - fund: Fund 2
+    label: 'F2: Developer Ecosystem'
+  - fund: Fund 3
+    label: 'F3: Developer Ecosystem'
+  - fund: Fund 4
+    label: 'F4: Developer Ecosystem'
+  - fund: Fund 5
+    label: 'F5: Developer ecosystem'
+  - fund: Fund 5
+    label: 'F5: DApps & Integrations'
+  - fund: Fund 5
+    label: 'F5: Grow Africa, Grow Cardano'
+  - fund: Fund 6
+    label: 'F6: Developer ecosystem'
+  - fund: Fund 6
+    label: 'F6: DApps & Integrations'
+  - fund: Fund 6
+    label: 'F6: Catalyst value onboarding'
