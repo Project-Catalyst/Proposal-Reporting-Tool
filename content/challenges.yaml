@@ -1,16 +1,16 @@
 ---
 challenges:
 - fund: Fund 1
-  label: Challenge F1
+  label: 'F1: Developer Ecosystem'
   value: challenge1
 - fund: Fund 2
-  label: Challenge F2
+  label: 'F2: Developer Ecosystem'
   value: challenge2
 - fund: Fund 3
-  label: Challenge F3
+  label: 'F3: Developer Ecosystem'
   value: challenge3
 - fund: Fund 4
-  label: Challenge F4
+  label: 'F4: Developer Ecosystem'
   value: challenge4
 - fund: Fund 5
   label: 'F5: Developer ecosystem'
