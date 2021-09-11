@@ -3,7 +3,8 @@ export default {
   target: 'static',
 
   router: {
-    base: '/Proposal-Reporting-Tool',
+    base:
+      process.env.NODE_ENV === 'production' ? '/Proposal-Reporting-Tool' : '/',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
