@@ -1,0 +1,17 @@
+---
+label: Challenges
+hide_body: true
+fields:
+- type: field_group_list
+  name: challenges
+  label: challenges
+  fields:
+  - type: text
+    name: fund
+    label: fund
+  - type: text
+    name: label
+    label: label
+  - type: text
+    name: value
+    label: value

@@ -7,7 +7,6 @@ sections:
 - type: document
   path: content/challenges.yaml
   label: Challenges
-  match: "**/*"
 - type: document
   path: content/funds.yaml
   label: Funds
