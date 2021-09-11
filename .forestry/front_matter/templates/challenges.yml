@@ -17,7 +17,7 @@ fields:
       options: []
       source:
         type: documents
-        section: funds
+        section: ''
         file: content/funds.yaml
         path: 
     label: Fund
