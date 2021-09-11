@@ -31,7 +31,11 @@ challenges:
   - Filling in gaps defined in the exploration stage.
 - fund: Fund 6
   label: 'F6: DApps & Integrations'
-  succes_factors: []
+  succes_factors:
+  - Total/growth of resource usage by applications
+  - Total volume of Ada involved in application transactions
+  - Number/growth of application transactions
+  - Number/growth of application output
 - fund: Fund 6
   label: 'F6: Catalyst value onboarding'
   succes_factors: []
