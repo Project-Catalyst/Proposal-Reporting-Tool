@@ -4,11 +4,16 @@ hide_body: true
 fields:
 - type: field_group_list
   name: funds
-  label: funds
+  label: Funds
   fields:
   - type: text
     name: label
-    label: label
+    label: Label
+    config:
+      required: true
   - type: text
     name: value
-    label: value
+    label: ID
+    description: Identifier for this field
+    config:
+      required: true
