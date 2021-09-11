@@ -2,16 +2,16 @@
 challenges:
   - fund: Fund 1
     label: 'F1: Developer Ecosystem'
-    succes_factors: []
+    success_factors: []
   - fund: Fund 2
     label: 'F2: Developer Ecosystem'
-    succes_factors: []
+    success_factors: []
   - fund: Fund 3
     label: 'F3: Developer Ecosystem'
-    succes_factors: []
+    success_factors: []
   - fund: Fund 4
     label: 'F4: Developer Ecosystem'
-    succes_factors: []
+    success_factors: []
   - fund: Fund 5
     label: 'F5: Developer ecosystem'
     success_factors: []
