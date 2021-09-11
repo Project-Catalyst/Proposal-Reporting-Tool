@@ -21,5 +21,12 @@ fields:
         file: content/funds.yaml
         path: funds
     label: Fund
+  - name: succes_factors
+    type: list
+    config:
+      use_select: false
+      min: 
+      max: 
+    label: Succes factors
 pages:
 - content/challenges.yaml
