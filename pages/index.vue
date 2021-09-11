@@ -159,16 +159,30 @@ export default {
     CollapsibleGroupItem
   },
   async asyncData ({ $content }) {
-    const { funds } = await $content('funds').fetch()
+    const { funds } = await $content('funds').fetch();
     const { challenges } = await $content('challenges').fetch();
 
+    function toUnderscore(str) {
+      return str.replace(/ /g, '_').toLowerCase();
+    };
+
+    const fundsOption = funds.map(fund => ({
+      label: fund,
+      value: toUnderscore(fund)
+    }))
+
+    const challengesOption = challenges.map(challenge => ({
+      ...challenge,
+      value: toUnderscore(challenge.label)
+    }));
+
     const groupedChallenges = {};
-    funds.forEach(fund => {
-      groupedChallenges[fund.value] = challenges.filter(({ fund: challengeFund, label, value }) => challengeFund === fund.value && { label, value });
+    fundsOption.forEach(fund => {
+      groupedChallenges[fund.value] = challengesOption.filter(({ fund: challengeFund, label, value }) => challengeFund === fund.label && { label, value });
     });
 
     return {
-      funds,
+      funds: fundsOption,
       challenges: groupedChallenges
     }
   },
