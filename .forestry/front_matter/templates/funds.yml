@@ -1,0 +1,14 @@
+---
+label: Funds
+hide_body: true
+fields:
+- type: field_group_list
+  name: funds
+  label: funds
+  fields:
+  - type: text
+    name: label
+    label: label
+  - type: text
+    name: value
+    label: value
