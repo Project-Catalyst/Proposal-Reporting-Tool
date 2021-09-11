@@ -2,7 +2,6 @@
   <!-- eslint-disable vue/v-slot-style -->
   <div class="container">
     <CBox
-      v-bind="mainStyles[colorMode]"
       d="flex"
       w="100vw"
       h="100vh"
@@ -49,14 +48,9 @@
                     type="select"
                     name="fund"
                     label="Proposal in fund"
-                    :options="{
-                      F2: 'Fund 2',
-                      F3: 'Fund 3',
-                      F4: 'Fund 4',
-                      F5: 'Fund 5',
-                      F6: 'Fund 6',
-                    }"
+                    :options="funds"
                   />
+
                   <FormulateInput
                     name="reportDetailsPublish"
                     :options="{
@@ -114,12 +108,7 @@
 
                       <FormulateInput
                         name="challenge"
-                        :options="{
-                          first: 'First',
-                          second: 'Second',
-                          third: 'Third',
-                          fourth: 'Fourth',
-                        }"
+                        :options="challenges[getProposal(index, 'fund')]"
                         type="select"
                         placeholder="Select challenge"
                         label="List of challenges in selected fund"
@@ -169,34 +158,26 @@ export default {
     CText,
     CollapsibleGroupItem
   },
-  inject: ['$chakraColorMode', '$toggleColorMode'],
+  async asyncData ({ $content }) {
+    const { funds } = await $content('funds').fetch()
+    const { challenges } = await $content('challenges').fetch();
+
+    const groupedChallenges = {};
+    funds.forEach(fund => {
+      groupedChallenges[fund.value] = challenges.filter(({ fund: challengeFund, label, value }) => challengeFund === fund.value && { label, value });
+    });
+
+    return {
+      funds,
+      challenges: groupedChallenges
+    }
+  },
   data () {
     return {
-      form: {},
-      showModal: false,
-      mainStyles: {
-        dark: {
-          bg: 'gray.700',
-          color: 'whiteAlpha.900'
-        },
-        light: {
-          bg: 'white',
-          color: 'gray.900'
-        }
-      }
+      form: {}
     }
   },
-  computed: {
-    colorMode () {
-      return this.$chakraColorMode()
-    },
-    theme () {
-      return this.$chakraTheme()
-    },
-    toggleColorMode () {
-      return this.$toggleColorMode
-    }
-  },
+  computed: {},
   methods: {
     getProposal (index, value) {
       const proposal = this.form.proposal && this.form.proposal.find((el, i) => i === index);
