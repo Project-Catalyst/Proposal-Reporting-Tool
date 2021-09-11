@@ -16,8 +16,8 @@ fields:
       required: false
       options: []
       source:
-        type: pages
+        type: documents
         section: funds
-        file: 
+        file: content/funds.yaml
         path: 
     label: Fund
