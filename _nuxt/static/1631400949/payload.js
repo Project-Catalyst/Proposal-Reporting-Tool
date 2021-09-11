@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/", {data:[{funds:["Fund 1","Fund 2","Fund 3","Fund 4","Fund 5","Fund 6"],challenges:{undefined:[]}}],fetch:{},mutations:void 0});
