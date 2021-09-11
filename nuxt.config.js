@@ -2,9 +2,13 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  router: {
+    base: '/Proposal-Reporting-Tool',
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Proposal-Reporting-Tool',
+    title: 'Proposal Reporting Tool',
     htmlAttrs: {
       lang: 'en',
     },
