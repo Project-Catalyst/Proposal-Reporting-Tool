@@ -48,7 +48,7 @@
                     type="select"
                     name="fund"
                     label="Proposal in fund"
-                    :options="funds"
+                    :options="fundsOption"
                   />
 
                   <FormulateInput
@@ -108,7 +108,7 @@
 
                       <FormulateInput
                         name="challenge"
-                        :options="challenges[getProposal(index, 'fund')]"
+                        :options="challengesOption[getProposal(index, 'fund')]"
                         type="select"
                         placeholder="Select challenge"
                         label="List of challenges in selected fund"
@@ -116,12 +116,9 @@
 
                       <FormulateInput
                         name="succesFactor"
-                        :options="{
-                          first: 'First',
-                          second: 'Second',
-                          third: 'Third',
-                          fourth: 'Fourth',
-                        }"
+                        :options="
+                          getSuccessFactors(getProposal(index, 'challenge'))
+                        "
                         type="select"
                         placeholder="Select succes factor"
                         label="List of succes factors in selected fund"
@@ -162,28 +159,29 @@ export default {
     const { funds } = await $content('funds').fetch();
     const { challenges } = await $content('challenges').fetch();
 
-    function toUnderscore(str) {
-      return str.replace(/ /g, '_').toLowerCase();
-    };
-
     const fundsOption = funds.map(fund => ({
       label: fund,
-      value: toUnderscore(fund)
+      value: fund
     }))
 
-    const challengesOption = challenges.map(challenge => ({
+    const mutatedChallenges = challenges.map(challenge => ({
       ...challenge,
-      value: toUnderscore(challenge.label)
+      value: challenge.label,
+      success_factors: challenge.success_factors.map(successFactor => ({
+        label: successFactor,
+        value: successFactor
+      }))
     }));
 
-    const groupedChallenges = {};
+    const challengesOption = {};
     fundsOption.forEach(fund => {
-      groupedChallenges[fund.value] = challengesOption.filter(({ fund: challengeFund, label, value }) => challengeFund === fund.label && { label, value });
+      challengesOption[fund.value] = mutatedChallenges.filter(({ fund: challengeFund, label, value }) => challengeFund === fund.label && { label, value });
     });
 
     return {
-      funds: fundsOption,
-      challenges: groupedChallenges
+      fundsOption,
+      challenges: mutatedChallenges,
+      challengesOption
     }
   },
   data () {
@@ -193,6 +191,10 @@ export default {
   },
   computed: {},
   methods: {
+    getSuccessFactors(challengeName) {
+      if (!challengeName) return [];
+      return this.challenges.find(({ label }) => label === challengeName).success_factors;
+    },
     getProposal (index, value) {
       const proposal = this.form.proposal && this.form.proposal.find((el, i) => i === index);
       if(value) {
