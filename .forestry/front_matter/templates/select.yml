@@ -1,4 +1,36 @@
 ---
-label: Select
+label: Input Select
 hide_body: true
-fields: []
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Name
+  description: HTML "name" attribute. Keep this to letters and underscores (_). No
+    spaces!
+- name: label
+  type: text
+  config:
+    required: false
+  label: Label
+  description: Label that appears above this field.
+- name: description
+  type: text
+  config:
+    required: false
+  label: Description
+  description: Help text to display beneath field. Optional.
+- name: required
+  type: boolean
+  label: Required
+  description: Check this field if the user is required to fill in this field
+- name: options
+  type: list
+  config:
+    use_select: true
+    min: 
+    max: 
+    source:
+      type: simple
+  label: Options
