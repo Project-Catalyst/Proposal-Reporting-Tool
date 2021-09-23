@@ -1,5 +1,5 @@
 ---
-label: Input Select
+label: Input Base
 hide_body: true
 fields:
 - name: name
@@ -25,12 +25,3 @@ fields:
   type: boolean
   label: Required
   description: Check this field if the user is required to fill in this field
-- name: options
-  type: list
-  config:
-    use_select: true
-    min: 
-    max: 
-    source:
-      type: simple
-  label: Options
