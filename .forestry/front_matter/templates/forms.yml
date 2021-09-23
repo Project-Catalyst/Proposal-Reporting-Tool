@@ -1,4 +1,17 @@
 ---
-label: Forms
+label: Form
 hide_body: true
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: form
+  type: blocks
+  label: Form
+  template_types:
+  - input-base
+  config:
+    min: 
+    max: 
