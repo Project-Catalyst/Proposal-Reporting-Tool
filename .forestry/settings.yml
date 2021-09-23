@@ -9,6 +9,8 @@ sections:
   label: Forms
   create: documents
   match: "**/*"
+  templates:
+  - forms
 - type: document
   path: content/challenges.yaml
   label: Challenges
